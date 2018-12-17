@@ -1,22 +1,11 @@
 <template>
   <v-app>
-    <v-layout
-    wrap
-    style="height: 200px;"
-  >
+    <v-layout wrap style="height: 200px;">
       <v-container>
         <v-layout justify-center>
-          <v-btn
-          color="pink"
-          dark
-          @click.stop="drawer = !drawer"
-        >
-          Toggle
-        </v-btn>
-              <router-view/>
+          <router-view/>
         </v-layout>
       </v-container>
-
       <v-navigation-drawer
         v-model="drawer"
         absolute
@@ -52,38 +41,24 @@
         </v-list>
       </v-navigation-drawer>
     </v-layout>
+    <Tabs/>
   </v-app>
 </template>
 <script>
-  export default {
-    data () {
-      return {
-        drawer: null,
-        items: [
-          { title: 'Home', icon: 'dashboard' },
-          { title: 'About', icon: 'question_answer' }
-        ]
-      }
+import Tabs from './partials/Tabs'
+export default {
+  name:"app",
+  components: {
+    Tabs
+  },
+  data () {
+    return {
+      drawer: null,
+      items: [
+        { title: 'Home', icon: 'dashboard' },
+        { title: 'About', icon: 'question_answer' }
+      ]
     }
   }
+}
 </script>
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
-
