@@ -9,15 +9,17 @@ export default {
   components:{
     auth
   },
-  data: () => ({
-    
-  }),
+  data: {
+    return () {
+
+    }
+  },
   methods: {
     sign_in (user) {
       console.log(user);
-    },
-    clear () {
-   
+      this.$localStorage.set('login', true);
+      console.log(this.$localStorage.get('login'));
+      this.$router.push("/")
     }
   }
   }

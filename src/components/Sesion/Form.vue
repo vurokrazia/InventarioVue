@@ -79,10 +79,17 @@ export default {
       this.$emit('sendForm', { users: this.user })
     },
     clear () {
-      this.email             = "";
-      this.password          = "";
-      this.confirm_password  = "";
+      this.user ={
+        email:            "",
+        password:         "",
+        confirm_password: ""
+      }
     }
+  },
+  mounted() {
+    if(this.$localStorage.get('login')){
+      this.$router.push("/")
+    } 
   }
-  }
+}
 </script>
