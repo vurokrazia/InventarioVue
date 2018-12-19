@@ -57,7 +57,9 @@ export default {
       drawer: true    ,
       items: [
         { title: 'Home', icon: 'dashboard', to: "/" },
-        { title: 'About', icon: 'question_answer', to: "/about" }
+        { title: 'About', icon: 'question_answer', to: "/about" },
+        { title: 'Iniciar sesión', icon: 'question_answer', to: "/login" },
+        { title: 'Registro', icon: 'question_answer', to: "/registered" }
       ]
     }
   },
@@ -68,3 +70,8 @@ export default {
   }
 }
 </script>
+<style>
+  #app {
+    background-color:silver !important;
+  }
+</style>
