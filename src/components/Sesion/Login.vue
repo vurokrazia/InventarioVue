@@ -5,6 +5,7 @@
 <script>
 import auth from "./Form"
 export default {
+  name:"Login",
   components:{
     auth
   },
