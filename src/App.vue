@@ -1,8 +1,18 @@
 <template>
   <v-app>
-    <v-layout wrap style="height: 200px;">
+    <v-layout >
       <v-container>
-        <v-layout justify-center>
+        <v-layout >
+          <v-toolbar app dark color='success'>
+            <v-toolbar-side-icon @click="setDrawer"/>
+            <v-toolbar-title>
+                <v-btn 
+                color='dark'
+                to='/'>
+                    Vuejs 2 FS
+                </v-btn>
+            </v-toolbar-title>
+          </v-toolbar>
           <router-view/>
         </v-layout>
       </v-container>
@@ -41,7 +51,7 @@
         </v-list>
       </v-navigation-drawer>
     </v-layout>
-    <Tabs/>
+    <!--<Tabs/>-->
   </v-app>
 </template>
 <script>
@@ -53,11 +63,16 @@ export default {
   },
   data () {
     return {
-      drawer: null,
+      drawer: true    ,
       items: [
         { title: 'Home', icon: 'dashboard' },
         { title: 'About', icon: 'question_answer' }
       ]
+    }
+  },
+  methods: {
+    setDrawer () {
+      this.drawer = !this.drawer;
     }
   }
 }

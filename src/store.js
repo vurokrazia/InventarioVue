@@ -5,10 +5,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-
   },
   mutations: {
-
+    setDrawer: (state, drawer) => {
+      state.drawer = drawer;
+    }
   },
   actions: {
 
