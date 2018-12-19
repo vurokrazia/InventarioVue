@@ -86,10 +86,11 @@ export default {
       }
     }
   },
-  mounted() {
-    if(this.$localStorage.get('login')){
+  created() {
+    if(!this.$localStorage.get('login')){
+      console.log("router");
       this.$router.push("/")
-    } 
+    }
   }
 }
 </script>

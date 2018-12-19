@@ -1,5 +1,15 @@
 <template>
   <v-app>
+    <v-toolbar app dark color='success'>
+      <v-toolbar-side-icon @click="setDrawer"/>
+      <v-toolbar-title>
+          Inventario Vue
+      </v-toolbar-title>
+      <v-spacer/>
+      <v-toolbar-items class="hidden-sm-and-down">
+          <v-btn  flat @click="logout" >Cerrar sesión</v-btn>
+      </v-toolbar-items>
+    </v-toolbar>
     <v-navigation-drawer 
         app
         v-model="drawer"
@@ -30,18 +40,12 @@
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
-      </v-navigation-drawer>
-      <v-content>
-        <v-container fluid>
-          <v-toolbar app dark color='success'>
-            <v-toolbar-side-icon @click="setDrawer"/>
-            <v-toolbar-title>
-                Inventario Vue
-            </v-toolbar-title>
-          </v-toolbar>
-          <router-view/>
-        </v-container>
-      </v-content>
+    </v-navigation-drawer>
+    <v-content>
+      <v-container fluid>
+        <router-view/>
+      </v-container>
+    </v-content>
     <!--<Tabs/>-->
   </v-app>
 </template>
@@ -54,7 +58,7 @@ export default {
   },
   data () {
     return {
-      drawer: true    ,
+      drawer: false    ,
       items: [
         { title: 'Home', icon: 'dashboard', to: "/" },
         { title: 'About', icon: 'question_answer', to: "/about" },
@@ -66,12 +70,17 @@ export default {
   methods: {
     setDrawer () {
       this.drawer = !this.drawer;
+    },
+    logout(){
+      console.log(this.$localStorage.get('login'));
+      this.$localStorage.set('login', false);
+      this.$router.push("/login")
     }
   }
 }
 </script>
 <style>
   #app {
-    background-color:silver !important;
+    background-color:rgb(240, 240, 240) !important;
   }
 </style>

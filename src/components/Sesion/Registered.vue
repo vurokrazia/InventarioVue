@@ -14,7 +14,7 @@ export default {
   }),
   methods: {
     registered (user) {
-      console.log(user);
+      this.$router.push("/login")
     }
   }
   }
