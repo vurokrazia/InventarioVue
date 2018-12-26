@@ -87,7 +87,7 @@ export default {
     }
   },
   created() {
-    if(!this.$localStorage.get('login')){
+    if(this.$store.state.session){
       console.log("router");
       this.$router.push("/")
     }

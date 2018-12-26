@@ -11,14 +11,12 @@ export default {
   },
   data: {
     return () {
-
     }
   },
   methods: {
     sign_in (user) {
-      console.log(user);
       this.$localStorage.set('login', true);
-      console.log(this.$localStorage.get('login'));
+      this.$store.commit("setSession", true);
       this.$router.push("/")
     }
   }

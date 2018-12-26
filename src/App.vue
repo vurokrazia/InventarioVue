@@ -6,7 +6,7 @@
           Inventario Vue
       </v-toolbar-title>
       <v-spacer/>
-      <v-toolbar-items class="hidden-sm-and-down">
+      <v-toolbar-items class="hidden-sm-and-down" v-if="$store.state.session">
           <v-btn  flat @click="logout" >Cerrar sesión</v-btn>
       </v-toolbar-items>
     </v-toolbar>
@@ -30,6 +30,15 @@
 
         <v-list class="pt-0" dense>
           <v-divider></v-divider>
+          
+          <v-list-tile v-if="!$store.state.session"  v-for="item in sesions"  :key="item.title"  @click="$router.push(item.to)">
+            <v-list-tile-action>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
 
           <v-list-tile  v-for="item in items"  :key="item.title"  @click="$router.push(item.to)">
             <v-list-tile-action>
@@ -62,6 +71,8 @@ export default {
       items: [
         { title: 'Home', icon: 'dashboard', to: "/" },
         { title: 'About', icon: 'question_answer', to: "/about" },
+      ],
+      sesions:[
         { title: 'Iniciar sesión', icon: 'question_answer', to: "/login" },
         { title: 'Registro', icon: 'question_answer', to: "/registered" }
       ]
@@ -72,10 +83,15 @@ export default {
       this.drawer = !this.drawer;
     },
     logout(){
-      console.log(this.$localStorage.get('login'));
       this.$localStorage.set('login', false);
+      this.$store.commit("setSession", false);
+      console.log("Logout " + this.$store.state.session);
       this.$router.push("/login")
     }
+  },
+  mounted() {
+    this.$store.commit("setSession", this.$localStorage.get('login') == "true" ? true : false);
+    console.log("created " + this.$store.state.session);
   }
 }
 </script>
