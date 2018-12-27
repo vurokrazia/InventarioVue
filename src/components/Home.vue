@@ -8,6 +8,11 @@
       return {
         
       }
+    },
+    mounted() {
+      if(!this.$store.state.session){
+        this.$router.push("/login");
+      }
     }
   }
 </script>
