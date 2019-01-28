@@ -71,6 +71,7 @@ export default {
       items: [
         { title: 'Home', icon: 'dashboard', to: "/" },
         { title: 'About', icon: 'question_answer', to: "/about" },
+        { title: 'Categories', icon: 'question_answer', to: "/categories" }
       ],
       sesions:[
         { title: 'Iniciar sesión', icon: 'question_answer', to: "/login" },
